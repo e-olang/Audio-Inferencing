@@ -22,7 +22,7 @@ telegram = os.getenv('TELEGRAM')
 
 
 def get_voice(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('Hello, record and send a short audio question using the voice note feature')
+    update.message.reply_text('Hello,')
     # Download the voice note
     new_file = context.bot.get_file(update.message.voice.file_id)
     new_file.download("run_files/voice_note.ogg")
