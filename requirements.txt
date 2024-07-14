@@ -7,3 +7,6 @@ torchaudio
 google-generativeai==0.7.2
 librosa==0.10.2.post1
 python-telegram-bot==13.15
+speechbrain
+torchvision
+pydub
