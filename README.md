@@ -8,10 +8,10 @@ This repository contains a Telegram bot that captures voice notes sent by users,
 The system consists of the following components:
 - Telegram Bot: 
 	- Receives voice notes from users.
-	- Response: The generated voice note is sent back to the user via the bot.
-- Voice Note to Text: The received voice note is transcribed to text using [insert STT model/library, e.g. Google Cloud Speech-to-Text, Mozilla DeepSpeech].
+	- Response: The generated voice note is returned to the user via the bot.
+- Voice Note to Text: The received voice note is transcribed to text using Speechbrain Wav2Vecv2 & Whisper.
 - LLM Inference: The transcribed text is passed to the Gemini Pro LLM for inference.
-Text to Voice Note: The output of the LLM is converted to a voice note using [insert TTS model/library, e.g. Google Text-to-Speech, Amazon Polly].
+Text to Voice Note: The output of the LLM is converted to a voice note using Tacotron and HifiGan models.
 
 
 
@@ -47,7 +47,7 @@ To use this application, follow these steps:
 <div style="text-align: center;">
 <img src="assets/telegram-1.jpg" width="200">
 </div>
-3. Step 3: **Hold** the mic icon (button) (botom right) to record and send a message. Pro-tip, start recording a message as soon as the mic button is held.
+3. Step 3: **Hold** the mic icon (button) (bottom right) to record and send a message. Pro-tip, start recording a message as soon as the mic button is held.
 <div style="text-align: center;">
 <img src="assets/telegram-2.jpg" width="200">
 </div>
@@ -65,7 +65,7 @@ To use this application, follow these steps:
 |-----------------------------------|---------------------------------------            |-----------|
 |Improve audio cleaning    			|`Resolve background noise issues`   	            |Ongoing    |
 |Migrate to Faster Whisper  for STT	|`For multilingual caps`            	            |Ongoing    |
-|Resolve Audio cut issue	        |`Sometimes audio sent back is cuat at 10s`         |Not-Started|
+|Resolve Audio cut issue	        |`Sometimes audio sent back is cut at 10s`         |Not-Started|
 |Integratw Whatsapp Platoform       |										            |Not-Started|        
 |Test on other LLMs :Ulizamama, etc	|										            |Not-Started|
 
