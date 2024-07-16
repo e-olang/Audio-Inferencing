@@ -20,6 +20,7 @@ load_dotenv()
 telegram = os.getenv('TELEGRAM')
 # ------------------------------------------------------------------------------------------------
 
+
 # Define states for the conversation
 WELCOME, VOICE = range(2)
 

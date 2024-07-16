@@ -1,5 +1,6 @@
 *.DS_Store
 *.wav
 tests.ipynb
-telegram_v2.py
 .env
+telegram_v2.py
+tests.ipynb
