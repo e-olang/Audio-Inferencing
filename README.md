@@ -36,7 +36,7 @@ The implementation is written in [insert programming language, e.g. *Python 3.9.
 
 To use this application, follow these steps:
 
-1.  Clone the repository and install the [required dependencies](requrements.txt).
+1.  Clone the repository and install the [required dependencies](requirements.txt).
 2.  Run the application using  `python telegram_v1.py`  in your terminal or command prompt.
 3.  Access the Telegram bot via the provided [link](https://t.me/sitol_bot). "https://t.me/sitol_bot"
 4.  Send a voice note to the bot to initiate a conversation.
@@ -59,15 +59,16 @@ To use this application, follow these steps:
 
 ---
 
-####  Future Work
+####  Activities
 
-|Task        					    |Description                    		            |Status|
-|-----------------------------------|---------------------------------------            |-----------|
-|Improve audio cleaning    			|`Resolve background noise issues`   	            |Ongoing    |
-|Migrate to Faster Whisper  for STT	|`For multilingual caps`            	            |Ongoing    |
-|Resolve Audio cut issue	        |`Sometimes audio sent back is cut at 10s`         |Not-Started|
-|Integratw Whatsapp Platoform       |										            |Not-Started|        
-|Test on other LLMs :Ulizamama, etc	|										            |Not-Started|
+|Task        					|Description                    			|Status|
+|-----------------------------------		|---------------------------------------            	|-----------|
+|Improve audio cleaning    			|`Resolve background noise issues`   	            	|Done   |
+|Migrate to Faster Whisper  for STT		|`For multilingual caps`            	            	|Done   |
+|Resolve Audio cut issue	        	|`Sometimes audio sent back is cut at 10s`         	|Done	|
+|Integrate Whatsapp Platform       		|							|Ongoing|        
+|Test on other LLMs :Ulizamama, etc		|							|Ongoing|
+|Deployment					|							|Not Started|
 
 
 
@@ -85,12 +86,12 @@ This repository is licensed under **TBD**
 #### Dir Structure:
 - Audio Inferencing
     - `assets/`             : Contains general media files for repo documentation
-    - `models/`             : Contains model bin/safetensor/ckpt files (only for open source models)
+    - `models/`             : Contains model bin/safe-tensor/ckpt files (only for open source models)
     - `Notebooks/`          : Traning and Draft Jupyter notebooks
-    - `outputs`             : Temp loaction for inspeiong wav, mp3 & ogg files during tests
+    - `outputs`             : Temp location for inspecting wav, mp3 & ogg files during tests
     - `pretrained_models/`  : Contains model configuration files (only for open source models)
-    - `run_files`           : Temp location for storing bot meida files during telegram inferencing
-    - `samples`             : Sample audion files (wav, mp3, flac & ogg)
+    - `run_files`           : Temp location for storing bot media files during telegram inferencing
+    - `samples`             : Sample audio files (wav, mp3, flac & ogg)
 
 
 
