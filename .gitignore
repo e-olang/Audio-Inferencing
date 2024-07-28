@@ -8,3 +8,21 @@ tests.ipynb
 
 /helpers/__pycache__
 __pycache__
+
+pretrained_models/HIFIGAN-f698c4315f0de704b6e5c69cb1837a03/custom.py
+pretrained_models/HIFIGAN-f698c4315f0de704b6e5c69cb1837a03/generator.ckpt
+pretrained_models/HIFIGAN-f698c4315f0de704b6e5c69cb1837a03/hyperparams.yaml
+pretrained_models/Tacotron2-6c17b9bf9205de3e1112bcf7152ca562/custom.py
+pretrained_models/Tacotron2-6c17b9bf9205de3e1112bcf7152ca562/hyperparams.yaml
+pretrained_models/Tacotron2-6c17b9bf9205de3e1112bcf7152ca562/model.ckpt
+models/hifigan/generator.ckpt
+models/hifigan/hyperparams.yaml
+models/model-speechbrain/config.json
+models/model-speechbrain/model.safetensors
+models/tacotron/config.json
+models/tacotron/hyperparams.yaml
+models/tacotron/model.ckpt
+models/tacotron/README.md
+models/tokenizer-speechbrain/special_tokens_map.json
+models/tokenizer-speechbrain/tokenizer_config.json
+models/tokenizer-speechbrain/vocab.json
