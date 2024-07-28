@@ -4,3 +4,7 @@ tests.ipynb
 .env
 telegram_v2.py
 tests.ipynb
+
+
+/helpers/__pycache__
+__pycache__
