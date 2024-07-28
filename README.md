@@ -61,14 +61,15 @@ To use this application, follow these steps:
 
 ####  Activities
 
-|Task        					|Description                    			|Status|
-|-----------------------------------		|---------------------------------------            	|-----------|
-|Improve audio cleaning    			|`Resolve background noise issues`   	            	|Done   |
-|Migrate to Faster Whisper  for STT		|`For multilingual caps`            	            	|Done   |
-|Resolve Audio cut issue	        	|`Sometimes audio sent back is cut at 10s`         	|Done	|
-|Integrate Whatsapp Platform       		|							|Ongoing|        
-|Test on other LLMs :Ulizamama, etc		|							|Ongoing|
-|Deployment					|							|Not Started|
+|Task        							|Description                    			|Status|
+|-----------------------------------	|-----------------------------------------	|-----------|
+|Improve audio cleaning    				|`Resolve background noise issues`   	    |Done (No longer an issue with Whipser)  |
+|Migrate to Faster Whisper  for STT		|`For multilingual caps`            	    |Done (Using Base model) |
+|Resolve Audio cut issue	        	|`Sometimes audio sent back is cut at 10s`  |Done (Limit token count)	|
+|Integrate Whatsapp Platform       		|											|Voice Pending|        
+|Test on UlizaLlamma3					|`Long inf times on CPU. Needs GPU: 45bg+ for 6 - 10 minute inf times`	|Done: |
+|Test on Mistral						|`Migrated from Nemo to `					|Ongoing|
+|Deployment								|											|Ongoing|
 
 
 
@@ -80,12 +81,11 @@ This repository is licensed under **TBD**
 
 ### Other:
 
-#### Tests
-- STT  Tests:
 
 #### Dir Structure:
 - Audio Inferencing
     - `assets/`             : Contains general media files for repo documentation
+	- `helpers/`			: Helper function for inferencing opps
     - `models/`             : Contains model bin/safe-tensor/ckpt files (only for open source models)
     - `Notebooks/`          : Traning and Draft Jupyter notebooks
     - `outputs`             : Temp location for inspecting wav, mp3 & ogg files during tests
