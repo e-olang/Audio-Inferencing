@@ -9,8 +9,8 @@ import librosa as lb
 import torch
 
 
-tokenizer = Wav2Vec2Tokenizer.from_pretrained('models/tokenizer-speechbrain')   #loads facebook/wav2vec2-base-960h tokenizer
-model = Wav2Vec2ForCTC.from_pretrained('models/model-speechbrain')              #loads facebook/wav2vec2-base-960h tokenizer
+tokenizer = Wav2Vec2Tokenizer.from_pretrained('../models/tokenizer-speechbrain')   #loads facebook/wav2vec2-base-960h tokenizer
+model = Wav2Vec2ForCTC.from_pretrained('../models/model-speechbrain')              #loads facebook/wav2vec2-base-960h tokenizer
 
 def audiototext(wav_file_path, sampling_rate = 16000):
     waveform, rate = lb.load(wav_file_path, sr = sampling_rate)
@@ -29,8 +29,8 @@ from speechbrain.inference.vocoders import HIFIGAN
 import os
 
 # Intialize TTS (tacotron2) and Vocoder (HiFIGAN)
-tacotron2 = Tacotron2.from_hparams(source="models/tacotron")
-hifi_gan = HIFIGAN.from_hparams(source="models/hifigan")
+tacotron2 = Tacotron2.from_hparams(source="../models/tacotron")
+hifi_gan = HIFIGAN.from_hparams(source="../models/hifigan")
 
 
 def texttoaudio(text, out_filename = 'output.wav'):

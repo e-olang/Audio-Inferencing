@@ -6,7 +6,7 @@ warnings.filterwarnings('ignore')
 
 base_model = whisper.load_model('base')
 
-def transcribe_base(filepath):
+def audiototext(filepath):
     """
     Args: Audio file path.
     Supports: wav, mp3, flac
