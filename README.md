@@ -4,14 +4,14 @@
 ### Overview
 This repository contains a Telegram bot that captures voice notes sent by users, transcribes them to text, infers a response using a Large Language Model (LLM) like Gemini Pro, and responds back with a voice note.
 
-###  Architecture
+###  Architecture (V4 Current)
 The system consists of the following components:
 - Telegram Bot: 
 	- Receives voice notes from users.
 	- Response: The generated voice note is returned to the user via the bot.
-- Voice Note to Text: The received voice note is transcribed to text using Speechbrain Wav2Vecv2 & Whisper.
-- LLM Inference: The transcribed text is passed to the Gemini Pro LLM for inference.
-Text to Voice Note: The output of the LLM is converted to a voice note using Tacotron and HifiGan models.
+- Voice Note to Text: The received voice note is transcribed to text using [Whisper](https://huggingface.co/openai/whisper-base).
+- LLM Inference: The transcribed text is passed to the [Gemini Pro](https://deepmind.google/technologies/gemini/pro/) LLM for inference.
+- Text to Voice Note: The output of the LLM is converted to a voice note using [ElevenLabs](https://elevenlabs.io/).
 
 
 
@@ -67,9 +67,9 @@ To use this application, follow these steps:
 |Migrate to Faster Whisper  for STT		|`For multilingual caps`            	    |Done (Using Base model) |
 |Resolve Audio cut issue	        	|`Sometimes audio sent back is cut at 10s`  |Done (Limit token count)	|
 |Integrate Whatsapp Platform       		|											|Ongoing (Resolve media download, Add voice reponse)|        
-|Test on UlizaLlamma3					|`Long inf times on CPU. Needs GPU: 45bg+ for 6 - 10 minute inf times`	|Done |
-|Test on Mistral						|`Migrated from Nemo to `					|Ongoing (Using API. To be moved to local using VLLM)|
-|Deployment								|											|Ongoing (Resolve Tacotron inference tensor errors frist)|
+|Test on UlizaLlamma3					|`Long inf times on CPU. Needs GPU: 45bg+ for 6 - 10 minute inf times`	|Done(Back to using Gemini/Pro)|
+|Migrate to using Elevenlabs for TTS	|`Much more Human-like audio`				|Done(Back to using Gemini/Pro)|
+|Deployment								| `Deploy version 4: Whisper -> GeminiPro -> ElevenLabs`	|Ongoing|
 
 
 
@@ -90,6 +90,20 @@ This repository is licensed under **TBD**
     - `pretrained_models/`  : Contains model configuration files (only for open source models)
     - `run_files`           : Temp location for storing bot media files during telegram inferencing
     - `samples`             : Sample audio files (wav, mp3, flac & ogg)
+	* telegram_v1.py :	Initial pipeline runing on Wav2Vec2, Gemini, Speechbrain. Challenges:
+		* STT Voice Clarity Changes
+		* Gemini Dependant on STT quality i.e. Bad Text == Bad Inference : _GIGO_
+	* telegram_v2.py :	Pipeline runing on Wav2Vec2, Mistral, Speechbrain. Challenges:
+		* STT Voice Clarity Changes
+		* Mistral Long Inference Times (Localy Hosted)
+	* telegram_v3.py :	Pipeline runing on Whsiper, Gemini, Speechbrain. 
+		* Better STT results for English
+		* Improved Gemini inference based on better STT text inputs
+		* TTS being robotic in certain instnaces
+		* Random Text Truncation with long Gemini Responses e.g. on query `What is malaria best known for`, Speechbrain TTS cuts at 6 seconds. Could be an issue with the wav handling and not TTS conversiton itself.
+	* telegram_v4.py :	Current **stable** pipeline runing on Whisper, GeminiPro  and ElevenLabs.
+		* Significantly better TTS results with much more human like voices
+
 
 
 --------
@@ -98,17 +112,27 @@ This repository is licensed under **TBD**
 
 #### Audio Handling
 
-##### STT
+##### Device-Specific Considerations:
 
-##### TTS
+Microphone Quality: Devices with low-quality microphones may require additional noise reduction techniques or more robust STT models to improve performance. <br>
+Processing Power: Only an issue when running local inferences. Payed alternatives may be cheaper in scllled up scenarios. <br>
+Memory Constraints: Same as above. Howevr the likes of Tacotron dont require 'highend' hardware. Infreceing is possible on CPU.
+
+##### Speech-to-Text (STT):
+
+Language Support: Swahili is a less-resourced language, there is a limited amount of models that can aid. Metas solutions are greate but running localy is not an option. <br>
+Accent and Dialect: Both Swahili & English have various accents and dialects, which can affect STT performance. Either traain/tune modesl on variety of speakers OR add as model consideration. <br>
+Noise Robustness: Devices with low-quality microphones may introduce noise into the audio signal, which can negatively impact STT performance. Can be resolved by using robust STT models that can handle noisy audio e.g. Whiper `Base` or `Large`. <br>
+Audio Quality: The quality of the audio signal can significantly impact STT performance. 
+
+##### Text-to-Speech (TTS):
+
+Language Support: Low resource languages not currently a major focus with most availble open-source & closed models. This means other issues like tonation may be difficult to achieve. <br>
+Audio Format: Telegram, WhatsApp and Other similar services use custom file formats (e.g. `OGG` ) to esnure less data use when transmiting files as well as minimal storage on host device. This means audio isn't 'lossless'. When inferencing queries audio may need to be conveted to `WAV` a conventional format, however this dosent resolve any audio quality issue caused by the likes of `OGG` formats. <br>
+
+#### LLM Inferecning
+_TODO_
 
 ----
-#### LLM Inferecning
 
-##### Gemini
 
-##### UlizaLlamma3
-
-##### Mistral
-
-##### Nvidia's - meta / llama-3.1-405b
