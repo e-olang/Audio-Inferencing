@@ -9,8 +9,8 @@ from speechbrain.inference.vocoders import HIFIGAN
 import os
 
 # Intialize TTS (tacotron2) and Vocoder (HiFIGAN)
-tacotron2 = Tacotron2.from_hparams(source="../models/tacotron")
-hifi_gan = HIFIGAN.from_hparams(source="../models/hifigan")
+tacotron2 = Tacotron2.from_hparams(source="models/tacotron")
+hifi_gan = HIFIGAN.from_hparams(source="models/hifigan")
 
 
 def texttoaudio(text, out_filename = 'output.wav'):
