@@ -61,15 +61,15 @@ To use this application, follow these steps:
 
 ####  Activities
 
-|Task        							|Description                    			|Status|
+|Task        							|Description                    			|Status (Activities / Solution)|
 |-----------------------------------	|-----------------------------------------	|-----------|
 |Improve audio cleaning    				|`Resolve background noise issues`   	    |Done (No longer an issue with Whipser)  |
 |Migrate to Faster Whisper  for STT		|`For multilingual caps`            	    |Done (Using Base model) |
 |Resolve Audio cut issue	        	|`Sometimes audio sent back is cut at 10s`  |Done (Limit token count)	|
-|Integrate Whatsapp Platform       		|											|Voice Pending|        
-|Test on UlizaLlamma3					|`Long inf times on CPU. Needs GPU: 45bg+ for 6 - 10 minute inf times`	|Done: |
-|Test on Mistral						|`Migrated from Nemo to `					|Ongoing|
-|Deployment								|											|Ongoing|
+|Integrate Whatsapp Platform       		|											|Ongoing (Resolve media download, Add voice reponse)|        
+|Test on UlizaLlamma3					|`Long inf times on CPU. Needs GPU: 45bg+ for 6 - 10 minute inf times`	|Done |
+|Test on Mistral						|`Migrated from Nemo to `					|Ongoing (Using API. To be moved to local using VLLM)|
+|Deployment								|											|Ongoing (Resolve Tacotron inference tensor errors frist)|
 
 
 
@@ -77,9 +77,7 @@ To use this application, follow these steps:
 #### License
 This repository is licensed under **TBD**
 
- --- 
 
-### Other:
 
 
 #### Dir Structure:
@@ -94,7 +92,23 @@ This repository is licensed under **TBD**
     - `samples`             : Sample audio files (wav, mp3, flac & ogg)
 
 
+--------
 
+### Findings
 
+#### Audio Handling
 
+##### STT
 
+##### TTS
+
+----
+#### LLM Inferecning
+
+##### Gemini
+
+##### UlizaLlamma3
+
+##### Mistral
+
+##### Nvidia's - meta / llama-3.1-405b
